@@ -1,0 +1,27 @@
+{
+  "name": "teleivo-httpproxy",
+  "version": "0.0.1",
+  "author": "teleivo",
+  "summary": "Configures http proxy settings of various tools",
+  "license": "Apache-2.0",
+  "source": "git://github.com/teleivo/puppet-httpproxy.git",
+  "project_page": "https://github.com/teleivo/puppet-httpproxy",
+  "operatingsystem_support": [
+    {
+      "operatingsystem": "Ubuntu",
+      "operatingsystemrelease": [
+        "14.04"
+      ]
+    }
+  ],
+  "requirements": [
+    {
+      "name": "puppet",
+      "version_requirement": "3.x"
+    }
+  ],
+  "description": "Module for proxy configuration of various tools",
+  "dependencies": [
+    {"name":"puppetlabs/stdlib","version_requirement":">= 3.2.0 < 5.0.0"}
+  ]
+}
