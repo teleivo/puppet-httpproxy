@@ -35,6 +35,7 @@ describe 'httpproxy', :type => :class do
           .with_content(/export no_proxy="#{$default_no_proxy}"/)
           .with_content(/export NO_PROXY="#{$default_no_proxy}"/)
       }
+      it { is_expected.not_to contain_file('/etc/sudoers.d/proxy') }
     end
 
     context 'with invalid parameters' do
@@ -63,6 +64,36 @@ describe 'httpproxy', :type => :class do
           })
         end
         it { should_not compile }
+      end
+
+      describe 'when keep_sudoers_env is not true or false' do
+        let :params do
+          valid_required_params.merge({
+            :keep_sudoers_env => 'invalid_val',
+          })
+        end
+        it { should_not compile }
+      end
+    end
+
+    context 'with required parameters and custom parameters given' do
+      describe 'with keep_sudoers_env = true' do
+        let :params do
+          valid_required_params.merge({
+            :keep_sudoers_env => true,
+          })
+        end
+
+        it { is_expected.to contain_file('/etc/sudoers.d/proxy')
+          .with(
+            'ensure'  => 'present',
+            'owner'   => 'root',
+            'group'   => 'root',
+            'mode'    => '0440',
+            'content' =>
+              "Defaults env_keep += \"HTTP_PROXY HTTPS_PROXY FTP_PROXY NO_PROXY\"\nDefaults env_keep += \"http_proxy https_proxy ftp_proxy no_proxy\"\n",
+          )
+        }
       end
     end
   end

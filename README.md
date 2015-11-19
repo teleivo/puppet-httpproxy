@@ -66,6 +66,12 @@ Currently only used in line 'export no_proxy="${no_proxy}"' in /etc/profile.d/pr
 Valid options: string.
 Defaults to "localhost,127.0.0.1"
 
+##### `keep_sudoers_env`
+
+Specifies whether `/etc/sudoers.d/proxy` is created which will preserve the environment variables created for $http_proxy when using sudo.
+Valid options: 'true', 'false'.
+Defaults to 'false'.
+
 ## Limitations
 
 This module is currently only tested on Ubuntu 14.04 64bit.  
