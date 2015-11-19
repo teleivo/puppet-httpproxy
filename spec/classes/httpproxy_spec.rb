@@ -27,9 +27,13 @@ describe 'httpproxy', :type => :class do
             'mode'   => '0644',
           )
           .with_content(/export http_proxy=http:\/\/#{$http_proxy}:#{$http_proxy_port}/)
+          .with_content(/export HTTP_PROXY=http:\/\/#{$http_proxy}:#{$http_proxy_port}/)
           .with_content(/export https_proxy=http:\/\/#{$http_proxy}:#{$http_proxy_port}/)
+          .with_content(/export HTTPS_PROXY=http:\/\/#{$http_proxy}:#{$http_proxy_port}/)
           .with_content(/export ftp_proxy=http:\/\/#{$http_proxy}:#{$http_proxy_port}/)
+          .with_content(/export FTP_PROXY=http:\/\/#{$http_proxy}:#{$http_proxy_port}/)
           .with_content(/export no_proxy="#{$default_no_proxy}"/)
+          .with_content(/export NO_PROXY="#{$default_no_proxy}"/)
       }
     end
 

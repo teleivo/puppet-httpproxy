@@ -1,6 +1,10 @@
 ### MANAGED BY PUPPET ###
 
 export http_proxy=http://<%= @http_proxy %>:<%= @http_proxy_port %>/
+export HTTP_PROXY=http://<%= @http_proxy %>:<%= @http_proxy_port %>/
 export https_proxy=http://<%= @http_proxy %>:<%= @http_proxy_port %>/
+export HTTPS_PROXY=http://<%= @http_proxy %>:<%= @http_proxy_port %>/
 export ftp_proxy=http://<%= @http_proxy %>:<%= @http_proxy_port %>/
+export FTP_PROXY=http://<%= @http_proxy %>:<%= @http_proxy_port %>/
 export no_proxy="<%= @no_proxy %>"
+export NO_PROXY="<%= @no_proxy %>"
