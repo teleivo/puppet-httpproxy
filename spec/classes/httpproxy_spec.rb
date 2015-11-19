@@ -31,14 +31,6 @@ describe 'httpproxy', :type => :class do
           .with_content(/export ftp_proxy=http:\/\/#{$http_proxy}:#{$http_proxy_port}/)
           .with_content(/export no_proxy="#{$default_no_proxy}"/)
       }
-
-      it { is_expected.to contain_file_line('/etc/apt/apt.conf_http_proxy')
-        .with(
-          'ensure' => 'present',
-          'path'   => '/etc/apt/apt.conf',
-          'line'   => "Acquire::http::Proxy \"http://#{$http_proxy}:#{$http_proxy_port}/\";",
-        )
-      }
     end
 
     context 'with invalid parameters' do

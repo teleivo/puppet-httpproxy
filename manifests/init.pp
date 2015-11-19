@@ -15,10 +15,4 @@ class httpproxy (
     mode    => '0644',
     content => template('httpproxy/proxy.sh.erb'),
   }
-
-  file_line { '/etc/apt/apt.conf_http_proxy':
-    ensure => present,
-    path   => '/etc/apt/apt.conf',
-    line   => "Acquire::http::Proxy \"http://${http_proxy}:${http_proxy_port}/\";",
-  }
 }
